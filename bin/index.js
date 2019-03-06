@@ -4,7 +4,7 @@ const start = require('../packages/commands/start');
 const init = require('../packages/commands/init');
 
 program
-  .version('1.0.0','-v, --version')
+  .version('0.0.2','-v, --version')
   .command('start')
   .description('display welcome page')
   .action(start);
