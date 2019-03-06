@@ -30,4 +30,6 @@ program.on('command:*', function(){
 
 program.parse(process.argv);
 
-start();
+if (program.args.length === 0) {
+  start();
+}
