@@ -2,9 +2,12 @@
 const program = require('commander');
 const start = require('../packages/commands/start');
 const init = require('../packages/commands/init');
+const pkg = require('../package.json');
+
+const { version } = pkg;
 
 program
-  .version('0.0.2','-v, --version')
+  .version(version,'-v, --version')
   .command('start')
   .description('display welcome page')
   .action(start);
