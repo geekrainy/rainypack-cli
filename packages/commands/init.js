@@ -1,14 +1,12 @@
 const path = require('path');
 const spawn = require('cross-spawn');
 const fse = require('fs-extra');
-const { emptyDirectory, confirm } = require('../utils');
+const { copyCore, emptyDirectory, confirm } = require('../utils');
 
 function create(dirname) {
-  const fetchProcess = spawn('git', ['clone', 'git@github.com:geekrainy/rainywebpack.git', path.resolve(dirname)], { stdio: 'inherit' });
-
-  fetchProcess.on('close', function() {
-    spawn('rm', ['-rf', path.resolve(dirname, '.git')]);
-    spawn('yarn', ['install', '--cwd', path.resolve(dirname)], { stdio: 'inherit' });
+  const destPath = path.resolve(dirname);
+  copyCore(destPath).then(() => {
+    spawn('yarn', ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
   })
 }
 
