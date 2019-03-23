@@ -1,6 +1,7 @@
 const path = require('path');
 const spawn = require('cross-spawn');
 const fse = require('fs-extra');
+const chalk = require('chalk');
 const { copyCore, emptyDirectory, confirm } = require('../utils');
 
 function create(dirname) {
@@ -15,7 +16,7 @@ function init(dirname) {
     if (empty) {
       create(dirname);
     } else {
-      confirm('Directory is not empty, continue? [y/N] ', function (ok) {
+      confirm(chalk.red('Directory is not empty, continue? [y/N] '), function (ok) {
         if (ok) {
           process.stdin.destroy();
           fse.removeSync(path.resolve(dirname))
