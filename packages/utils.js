@@ -1,11 +1,23 @@
 const readline = require('readline');
 const path = require('path');
+const spawn = require('cross-spawn');
 const fs = require('fs');
 const fse = require('fs-extra');
 const chalk = require('chalk');
 
 const execPath = __dirname;
 const corePath = path.resolve(execPath.slice(0, -8), 'rainywebpack');
+
+function updateCore(branch = 'master') {
+  return new Promise((resolve, reject) => {
+    const updateProcess = spawn('git', ['-C', corePath, 'pull', 'origin', branch],  { stdio: 'inherit' });
+
+    updateProcess.on('close', () => resolve());
+    updateProcess.on('error', err => reject(err));
+  })
+  
+  // spawn('git', ['-C', corePath, 'pull', 'origin', branch]);
+}
 
 function copyCore(destPath) {
   const appName = destPath.split('/').pop();
@@ -53,6 +65,7 @@ function confirm (msg, callback) {
 }
 
 module.exports = {
+  updateCore,
   copyCore,
   emptyDirectory,
   confirm,

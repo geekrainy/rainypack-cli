@@ -2,13 +2,13 @@ const path = require('path');
 const spawn = require('cross-spawn');
 const fse = require('fs-extra');
 const chalk = require('chalk');
-const { copyCore, emptyDirectory, confirm } = require('../utils');
+const { updateCore, copyCore, emptyDirectory, confirm } = require('../utils');
 
-function create(dirname) {
+async function create(dirname) {
   const destPath = path.resolve(dirname);
-  copyCore(destPath).then(() => {
-    spawn('yarn', ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
-  })
+  await updateCore();
+  await copyCore(destPath)
+  spawn('yarn', ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
 }
 
 function init(dirname) {
