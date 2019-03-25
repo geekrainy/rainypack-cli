@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "git clone https://github.com/geekrainy/rainywebpack.git"
+    "postinstall": "git clone git@github.com:geekrainy/rainywebpack.git"
   },
   "repository": {
     "type": "git",
