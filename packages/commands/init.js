@@ -4,10 +4,11 @@ const fse = require('fs-extra');
 const chalk = require('chalk');
 const { updateCore, copyCore, findYarn, emptyDirectory, confirm } = require('../utils');
 
-async function create(dirname, install) {
+async function create(dirname, cmd) {
+  const { install = true, ts = false } = cmd;
   const destPath = path.resolve(dirname);
   const yarn = findYarn();
-  await updateCore();
+  await updateCore(ts);
   await copyCore(destPath)
   if (install) {
     spawn(yarn, ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
@@ -15,16 +16,14 @@ async function create(dirname, install) {
 }
 
 function init(dirname, cmd) {
-  const { install = true } = cmd;
   emptyDirectory(dirname, function (empty) {
     if (empty) {
-      create(dirname, install);
+      create(dirname, cmd);
     } else {
       confirm(chalk.red('Directory is not empty, continue? [y/N] '), function (ok) {
         if (ok) {
           process.stdin.destroy();
-          fse.removeSync(path.resolve(dirname))
-          create(dirname, install);
+          create(dirname, cmd);
         } else {
           console.error('aborting');
           exit(1);

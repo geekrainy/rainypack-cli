@@ -15,15 +15,17 @@ program
 program
   .command('init')
   .description('initial a rainywebpack project in current directory')
-  .option('--no-install', 'Install dependencies after project create, default: true')
-  .action(function(_, cmd) {
-    init('.', cmd);
+  .option('-n, --no-install', 'Install dependencies after project create, default: true')
+  .option('-t, --ts', 'Initial project with TypeScript')
+  .action(function(cmd) {
+    init(process.cwd, cmd);
   });
 
 program
   .command('new [dir]')
-  .description('initial a new project')
-  .option('--no-install', 'Install dependencies after project create, default: true')
+  .description('initial a new rainywebpack')
+  .option('-n, --no-install', 'Install dependencies after project create, default: true')
+  .option('-t, --ts', 'Initial project with TypeScript')
   .action(function(dir, cmd){
       init(dir, cmd);
   });

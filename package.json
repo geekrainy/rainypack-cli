@@ -1,6 +1,6 @@
 {
   "name": "rw-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "rainywebpack cli tool",
   "main": "index.js",
   "bin": {
