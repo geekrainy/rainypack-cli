@@ -4,6 +4,7 @@ const spawn = require('cross-spawn');
 const fs = require('fs');
 const fse = require('fs-extra');
 const chalk = require('chalk');
+const which = require('which');
 
 const execPath = __dirname;
 const corePath = path.resolve(execPath.slice(0, -8), 'rainywebpack');
@@ -15,8 +16,6 @@ function updateCore(branch = 'master') {
     updateProcess.on('close', () => resolve());
     updateProcess.on('error', err => reject(err));
   })
-  
-  // spawn('git', ['-C', corePath, 'pull', 'origin', branch]);
 }
 
 function copyCore(destPath) {
@@ -45,6 +44,19 @@ function writeFile(destPath, content, mode = 0644) {
   console.log(chalk.green(`create: ${destPath}`));
 }
 
+function findYarn() {
+  const binList = process.platform === 'win32' ? ['yarn.cmd', 'tnpm.cmd', 'cnpm.cmd', 'npm.cmd'] : ['yarn', 'tnpm', 'cnpm', 'npm'];
+  for(let i = 0; i < binList.length; i++) {
+    try {
+      which.sync(binList[i]);
+      return binList[i];
+    } catch (e) {
+
+    }
+  }
+  throw new Error('please install yarn or npm');
+}
+
 function emptyDirectory(path, fn) {
   fs.readdir(path, function(err, files){
     if (err && 'ENOENT' != err.code) throw err;
@@ -68,5 +80,6 @@ module.exports = {
   updateCore,
   copyCore,
   emptyDirectory,
+  findYarn,
   confirm,
 }
