@@ -1,6 +1,6 @@
 const readline = require('readline');
 const path = require('path');
-const { exec } = require('child_process');
+const spawn = require('cross-spawn');
 const fs = require('fs');
 const fse = require('fs-extra');
 const chalk = require('chalk');
@@ -12,15 +12,14 @@ const corePath = path.resolve(execPath.slice(0, -8), 'rainywebpack');
 function updateCore(ts) {
   const branch = ts ? 'ts' : 'master';
   return new Promise((resolve, reject) => {
-    exec(`cd ${corePath} && git checkout ${branch} && git pull origin ${branch}`, (error, stdout, stderr) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-      console.log(stdout);
-      console.log(stderr);
-      resolve();
+    const updateProcess = spawn(`cd ${corePath} && git checkout ${branch} && git pull origin ${branch}`, {
+      stdio: 'inherit',
+      shell: true,
+      cwd: corePath,
     })
+
+    updateProcess.on('exit', () => resolve());
+    updateProcess.on('error', err => reject(err));
   })
 
 }
