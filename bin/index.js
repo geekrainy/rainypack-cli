@@ -18,7 +18,7 @@ program
   .option('-n, --no-install', 'Install dependencies after project create, default: true')
   .option('-t, --ts', 'Initial project with TypeScript')
   .action(function(cmd) {
-    init(process.cwd, cmd);
+    init('.', cmd);
   });
 
 program
