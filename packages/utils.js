@@ -39,7 +39,7 @@ function updateCore(ts) {
 }
 
 function copyCore(destPath) {
-  const appName = destPath.split('/').pop();
+  const appName = destPath.split(/[\\|/]/).pop();
   const list = fs.readdirSync(corePath).filter(f => !['.DS_Store', '.git', 'node_modules', 'package.json', '*.bak', '*.*.bak', '*.tmp', '*.swp'].includes(f));
 
   console.log(chalk.green('Initial rainywebpack...'))
