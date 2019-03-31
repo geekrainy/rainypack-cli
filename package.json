@@ -1,18 +1,18 @@
 {
-  "name": "rw-cli",
-  "version": "0.0.7",
-  "description": "rainywebpack cli tool",
+  "name": "rainypack-cli",
+  "version": "0.0.8",
+  "description": "rainypack cli tool",
   "main": "index.js",
   "bin": {
-    "rw": "./bin/index.js"
+    "rp": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "git clone git@github.com:geekrainy/rainywebpack.git"
+    "postinstall": "git clone git@github.com:geekrainy/rainypack-webpack.git"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geekrainy/rw-cli.git"
+    "url": "git+https://github.com/geekrainy/rainypack-cli.git"
   },
   "keywords": [
     "webpack"
@@ -20,9 +20,9 @@
   "author": "Rainy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/geekrainy/rw-cli/issues"
+    "url": "https://github.com/geekrainy/rainypack-cli/issues"
   },
-  "homepage": "https://github.com/geekrainy/rw-cli#readme",
+  "homepage": "https://github.com/geekrainy/rainypack-cli#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.19.0",

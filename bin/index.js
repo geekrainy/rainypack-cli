@@ -14,7 +14,7 @@ program
 
 program
   .command('init')
-  .description('initial a rainywebpack project in current directory')
+  .description('initial a rainypack project in current directory')
   .option('-n, --no-install', 'Install dependencies after project create, default: true')
   .option('-t, --ts', 'Initial project with TypeScript')
   .action(function(cmd) {
@@ -23,7 +23,7 @@ program
 
 program
   .command('new [dir]')
-  .description('initial a new rainywebpack')
+  .description('initial a new rainypack')
   .option('-n, --no-install', 'Install dependencies after project create, default: true')
   .option('-t, --ts', 'Initial project with TypeScript')
   .action(function(dir, cmd){

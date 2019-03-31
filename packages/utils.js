@@ -8,12 +8,12 @@ const which = require('which');
 const ProgressBar = require('progress');
 
 const execPath = __dirname;
-const corePath = path.resolve(execPath.slice(0, -8), 'rainywebpack');
+const corePath = path.resolve(execPath.slice(0, -8), 'rainypack-webpack');
 
 function updateCore(ts) {
   const branch = ts ? 'ts' : 'master';
   return new Promise((resolve, reject) => {
-    const updateBar = new ProgressBar(`${chalk.blue('Updating rainywebpack:')} [:bar] :percent`, {
+    const updateBar = new ProgressBar(`${chalk.blue('Updating rainypack:')} [:bar] :percent`, {
       complete: '=',
       incomplete: '-',
       total: 30,
@@ -42,7 +42,7 @@ function copyCore(destPath) {
   const appName = destPath.split(/[\\|/]/).pop();
   const list = fs.readdirSync(corePath).filter(f => !['.DS_Store', '.git', 'node_modules', 'package.json', '*.bak', '*.*.bak', '*.tmp', '*.swp'].includes(f));
 
-  console.log(chalk.green('Initial rainywebpack...'))
+  console.log(chalk.green('Initial rainypack...'))
 
   return new Promise((resolve, reject) => {
     setTimeout(function () {

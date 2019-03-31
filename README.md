@@ -1,19 +1,19 @@
-# rw-cli[WIP]
+# rainypack-cli[WIP]
 
-[![npm](https://img.shields.io/npm/v/rw-cli.svg?style=flat-square)](https://www.npmjs.com/package/rw-cli)  [![npm](https://img.shields.io/npm/dm/rw-cli.svg?style=flat-square)](https://www.npmjs.com/package/rw-cli)  [![npm](https://img.shields.io/npm/dt/rw-cli.svg?style=flat-square)](https://www.npmjs.com/package/rw-cli)  [![npm](https://img.shields.io/npm/l/rw-cli.svg?style=flat-square)](https://www.npmjs.com/package/rw-cli)
+[![npm](https://img.shields.io/npm/v/rainypack-cli.svg?style=flat-square)](https://www.npmjs.com/package/rainypack-cli)  [![npm](https://img.shields.io/npm/dm/rainypack-cli.svg?style=flat-square)](https://www.npmjs.com/package/rainypack-cli)  [![npm](https://img.shields.io/npm/dt/rainypack-cli.svg?style=flat-square)](https://www.npmjs.com/package/rainypack-cli)  [![npm](https://img.shields.io/npm/l/rainypack-cli.svg?style=flat-square)](https://www.npmjs.com/package/rainypack-cli)
 
-CLI for [rainywebpack](https://github.com/geekrainy/rainywebpack).
+CLI for [rainypack](https://github.com/geekrainy/rainypack).
 
 ## Getting Started
 
 ```shell
 # Install
-$ yarn global add rw-cli
+$ yarn global add rainypack-cli
 
-# Create rainywebpack project
-$ rw new demo
+# Create rainypack project
+$ rp new demo
 
-# Start rainywebpack
+# Start rainypack
 $ cd demo
 $ yarn start
 ```
