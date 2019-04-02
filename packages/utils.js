@@ -8,10 +8,13 @@ const which = require('which');
 const ProgressBar = require('progress');
 
 const execPath = __dirname;
-const corePath = path.resolve(execPath.slice(0, -8), 'rainypack-webpack');
+const packagePath = execPath.slice(0, -8);
 
-function updateCore(ts) {
+function updateCore(rollup, ts) {
   const branch = ts ? 'ts' : 'master';
+  const coreType = rollup ? 'rainypack-rollup' : 'rainypack-webpack';
+  const corePath = path.resolve(packagePath, coreType);
+
   return new Promise((resolve, reject) => {
     const updateBar = new ProgressBar(`${chalk.blue('Updating rainypack:')} [:bar] :percent`, {
       complete: '=',
@@ -38,8 +41,10 @@ function updateCore(ts) {
   })
 }
 
-function copyCore(destPath) {
+function copyCore(rollup, destPath) {
   const appName = destPath.split(/[\\|/]/).pop();
+  const coreType = rollup ? 'rainypack-rollup' : 'rainypack-webpack';
+  const corePath = path.resolve(packagePath, coreType);
   const list = fs.readdirSync(corePath).filter(f => !['.DS_Store', '.git', 'node_modules', 'package.json', '*.bak', '*.*.bak', '*.tmp', '*.swp'].includes(f));
 
   console.log(chalk.green('Initial rainypack...'))

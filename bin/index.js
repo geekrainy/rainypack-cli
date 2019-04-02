@@ -17,6 +17,7 @@ program
   .description('initial a rainypack project in current directory')
   .option('-n, --no-install', 'Install dependencies after project create, default: true')
   .option('-t, --ts', 'Initial project with TypeScript')
+  .option('-r, --rollup', 'Initial project with Rollup')
   .action(function(cmd) {
     init('.', cmd);
   });
@@ -26,6 +27,7 @@ program
   .description('initial a new rainypack')
   .option('-n, --no-install', 'Install dependencies after project create, default: true')
   .option('-t, --ts', 'Initial project with TypeScript')
+  .option('-r, --rollup', 'Initial project with Rollup')
   .action(function(dir, cmd){
       init(dir, cmd);
   });

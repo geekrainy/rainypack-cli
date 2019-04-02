@@ -5,11 +5,11 @@ const chalk = require('chalk');
 const { updateCore, copyCore, findYarn, emptyDirectory, confirm } = require('../utils');
 
 async function create(dirname, cmd) {
-  const { install = true, ts = false } = cmd;
+  const { install = true, ts = false, rollup = false } = cmd;
   const destPath = path.resolve(dirname);
   const yarn = findYarn();
-  await updateCore(ts);
-  await copyCore(destPath)
+  await updateCore(rollup, ts);
+  await copyCore(rollup, destPath);
   if (install) {
     spawn(yarn, ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
   }
