@@ -14,6 +14,7 @@ const coreConfig = {
   path: path.resolve(packagePath, 'node_modules', CORE_NAME.webpack),
   type: CORE_TYPE.default,
 }
+const yarn = findYarn();
 
 function init(dirname, cmd) {
   emptyDirectory(dirname, function (empty) {
@@ -36,7 +37,6 @@ function init(dirname, cmd) {
 async function create(dirname, cmd) {
   const { install = true, ts = false, rollup = false } = cmd;
   const destPath = path.resolve(dirname);
-  const yarn = findYarn();
 
   if (ts) {
     coreConfig.type = CORE_TYPE.ts;
@@ -60,7 +60,7 @@ function updateCore() {
       incomplete: '-',
       total: 30,
     });
-    const updateProcess = spawn(`yarn upgrade ${coreConfig.name}`, {
+    const updateProcess = spawn(yarn, ['upgrade', coreConfig.name], {
       shell: true
     })
     const timer = setInterval(function (){
