@@ -208,6 +208,16 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
+rainypack-rollup@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/rainypack-rollup/-/rainypack-rollup-0.0.1.tgz#f3ec10450f80752a62f6d7322ffb595bc193594f"
+  integrity sha512-w5ZMygTB3iKxkjaS8KV6+6A9P6CmCglRkLfaZxrynHLismxc2mB/0yMSQhWJ70Neej/gnQR5eszR0DnMBkxmXA==
+
+rainypack-webpack@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/rainypack-webpack/-/rainypack-webpack-0.1.2.tgz#c0b9b2255176581a0daa8b064ad072a56ac851e2"
+  integrity sha512-e7SlE7ZpwpbEWPTG058IB5O/ZfGO+095q1yYyWxhhMDFCsF7Nlk6Q8TStDJEpqxBf7goOiixZiJz4RpMkSPQVQ==
+
 restore-cursor@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"
