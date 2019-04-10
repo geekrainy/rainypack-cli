@@ -5,16 +5,21 @@ const fse = require('fs-extra');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
 
+const { name:CLI_NAME } = require('../../package.json');
 const { writeFile, findYarn, emptyDirectory, confirm } = require('../utils/utils');
 const { CORE_PATH_PREFIX, CORE_IGNORE_LIST, TS_CORE_IGNORE_LIST, CORE_NAME, CORE_TYPE } = require('../utils/constants');
 
-const packagePath = __dirname.split(path.sep).slice(0, -2).join(path.sep);
+const yarn = findYarn();
+const globalPackagePath = __dirname.split(path.sep).slice(0, -3);
+const innerPackagePath = globalPackagePath.concat([CLI_NAME, 'node_modules']);
+
+const useInner = fs.readdirSync(innerPackagePath.join(path.sep)).includes(CORE_NAME.webpack);
+const packagePath = useInner ? innerPackagePath.join(path.sep) : globalPackagePath.join(path.sep);
 const coreConfig = {
   name: CORE_NAME.webpack,
-  path: path.resolve(packagePath, 'node_modules', CORE_NAME.webpack),
+  path: path.resolve(packagePath, CORE_NAME.webpack),
   type: CORE_TYPE.default,
 }
-const yarn = findYarn();
 
 function init(dirname, cmd) {
   emptyDirectory(dirname, function (empty) {
@@ -43,7 +48,7 @@ async function create(dirname, cmd) {
   }
 
   if (rollup) {
-    coreConfig.path = path.resolve(packagePath, 'node_modules', CORE_NAME.rollup);
+    coreConfig.path = path.resolve(packagePath, CORE_NAME.rollup);
   }
 
   await updateCore();
