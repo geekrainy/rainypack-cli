@@ -31,8 +31,8 @@ function init(dirname, cmd) {
           process.stdin.destroy();
           create(dirname, cmd);
         } else {
-          console.error('aborting');
-          exit(1);
+          console.error('Aborting.');
+          return;
         }
       });
     }
@@ -65,7 +65,9 @@ function updateCore() {
       incomplete: '-',
       total: 30,
     });
-    const updateProcess = spawn(yarn, ['upgrade', coreConfig.name]);
+    const updateProcess = spawn(yarn, ['upgrade', coreConfig.name], {
+      shell: true
+    })
     const timer = setInterval(function (){
       updateBar.tick();
       if (updateBar.curr === 28) {
