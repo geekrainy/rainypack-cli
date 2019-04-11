@@ -10,11 +10,12 @@ const { writeFile, findYarn, emptyDirectory, confirm } = require('../utils/utils
 const { CORE_PATH_PREFIX, CORE_IGNORE_LIST, TS_CORE_IGNORE_LIST, CORE_NAME, CORE_TYPE } = require('../utils/constants');
 
 const yarn = findYarn();
-const globalPackagePath = __dirname.split(path.sep).slice(0, -3);
+const sep = path.sep;
+const globalPackagePath = __dirname.split(sep).slice(0, -3);
 const innerPackagePath = globalPackagePath.concat([CLI_NAME, 'node_modules']);
 
-const useInner = fs.readdirSync(innerPackagePath.join(path.sep)).includes(CORE_NAME.webpack);
-const packagePath = useInner ? innerPackagePath.join(path.sep) : globalPackagePath.join(path.sep);
+const useInner = fs.readdirSync(innerPackagePath.join(sep)).includes(CORE_NAME.webpack);
+const packagePath = useInner ? innerPackagePath.join(sep) : globalPackagePath.join(sep);
 const coreConfig = {
   name: CORE_NAME.webpack,
   path: path.resolve(packagePath, CORE_NAME.webpack),
@@ -83,7 +84,7 @@ function updateCore() {
 }
 
 function copyCore(destPath) {
-  const appName = destPath.split(path.sep).pop();
+  const appName = destPath.split(sep).pop();
 
   const defaultCorePath = `${coreConfig.path}/lib`;
   const tsCorePath = `${coreConfig.path}/ts`;
@@ -111,7 +112,7 @@ function copyCore(destPath) {
         const destFileName = file.replace(/(lib|ts)\//, '');
 
         return fse.copy(`${coreConfig.path}/${file}`, `${destPath}/${destFileName}`)
-          .then(() => console.log(chalk.green(`create: ${destPath}/${destFileName}`)))
+          .then(() => console.log(chalk.green(`create: ${destPath}${sep}${destFileName}`)))
       }))
         .then(() => {
           const appPkg = require(appPkgPath);
@@ -119,7 +120,7 @@ function copyCore(destPath) {
           appPkg.description = appName;
           appPkg.author = '';
   
-          writeFile(`${destPath}/package.json`, JSON.stringify(appPkg, null, 2));
+          writeFile(`${destPath}${sep}package.json`, JSON.stringify(appPkg, null, 2));
           resolve();
         })
         .catch(err => reject(err));
