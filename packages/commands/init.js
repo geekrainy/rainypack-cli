@@ -65,9 +65,7 @@ function updateCore() {
       incomplete: '-',
       total: 30,
     });
-    const updateProcess = spawn(yarn, ['upgrade', coreConfig.name], {
-      shell: true
-    })
+    const updateProcess = spawn(yarn, ['upgrade', coreConfig.name]);
     const timer = setInterval(function (){
       updateBar.tick();
       if (updateBar.curr === 28) {

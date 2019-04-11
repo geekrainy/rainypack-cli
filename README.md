@@ -18,10 +18,27 @@ $ cd demo
 $ yarn start
 ```
 
+## Usage
+
+```shell
+$ rp --help
+Usage: rp [options] [command]
+
+Options:
+  -v, --version        output the version number
+  -h, --help           output usage information
+
+Commands:
+  start                display welcome page
+  init [options]       initial a rainypack project in current directory
+  new [options] [dir]  initial a new rainypack
+```
+
 ## Generated File Tree
 
 ```shell
-.
+# webpack version
+./
 ├── .babelrc
 ├── .eslintignore
 ├── .eslintrc.js
@@ -38,6 +55,33 @@ $ yarn start
 │   ├── index.ejs
 │   ├── index.js
 │   └── utils.js
+├── webpack.common.js
+├── webpack.dev.js
+├── webpack.prod.js
+└── yarn.lock
+
+# rollup version
+
+./
+├── .babelrc
+├── .editorconfig
+├── .eslintignore
+├── .eslintrc.js
+├── .prettierignore
+├── .prettierrc
+├── .stylelintrc
+├── README.md
+├── package.json
+├── src
+│   ├── App.less
+│   ├── App.tsx
+│   ├── avatar.jpg
+│   ├── index.ejs
+│   ├── index.tsx
+│   └── utils.tsx
+├── tsconfig.json
+├── types
+│   └── global.d.ts
 ├── webpack.common.js
 ├── webpack.dev.js
 ├── webpack.prod.js
