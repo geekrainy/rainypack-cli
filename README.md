@@ -38,7 +38,7 @@ Commands:
 
 ```shell
 # webpack version
-./
+.
 ├── .babelrc
 ├── .eslintignore
 ├── .eslintrc.js
@@ -62,28 +62,22 @@ Commands:
 
 # rollup version
 
-./
+.
 ├── .babelrc
 ├── .editorconfig
 ├── .eslintignore
 ├── .eslintrc.js
 ├── .prettierignore
 ├── .prettierrc
-├── .stylelintrc
 ├── README.md
+├── __test__
+│   └── logo.js
 ├── package.json
+├── rollup.common.js
+├── rollup.dev.js
+├── rollup.prod.js
 ├── src
-│   ├── App.less
-│   ├── App.tsx
-│   ├── avatar.jpg
-│   ├── index.ejs
-│   ├── index.tsx
-│   └── utils.tsx
-├── tsconfig.json
-├── types
-│   └── global.d.ts
-├── webpack.common.js
-├── webpack.dev.js
-├── webpack.prod.js
+│   ├── logo.js
+│   └── main.js
 └── yarn.lock
 ```
