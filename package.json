@@ -2,7 +2,7 @@
   "name": "rainypack-cli",
   "version": "0.1.4",
   "description": "rainypack cli tool",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "bin": {
     "rp": "./bin/index.js"
   },
